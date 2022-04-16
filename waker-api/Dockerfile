@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir --upgrade -r /waker-api/requirements.txt
 
 COPY ./src /waker-api/src
 
-CMD ["uvicorn", "src.main:app","--reload","--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "src.main:app","--reload","--host", "0.0.0.0", "--port", "8888"]

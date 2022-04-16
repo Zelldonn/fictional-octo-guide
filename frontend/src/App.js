@@ -12,7 +12,7 @@ function App() {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(['2c:f0:5d:76:d4:9c'])
+      body: JSON.stringify({"mac_address":"2c:f0:5d:76:d4:9c"})
   };
 
     await fetch("/api/v1/wakeup", requestOptions)

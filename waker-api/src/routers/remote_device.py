@@ -14,7 +14,7 @@ async def get_devices():
 
 
 @router.post("/wakeup", tags=["Devices"])
-async def wakeup_device(mac_addresses : List[str] = ['2c:f0:5d:76:d4:9c']) :
+async def wakeup_device(mac_addresses : str = "2c:f0:5d:76:d4:9c") :
     print(f"INFO : sending wake on lan to : {mac_addresses}")
     wake_up(mac_addresses)
     return "Magic packet sent"

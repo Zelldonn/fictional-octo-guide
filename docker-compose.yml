@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  waker-api:
+    build: ./waker-api
+    image: waker-api
+    volumes:
+      - ./waker-api/src:/waker-api/src
+    ports:
+      - "80:80"
+    networks: 
+      - api
+  frontend:
+    build: ./frontend
+    image: frontend
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    command: yarn start
+    networks: 
+      - frontend
+      - api
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword 
+    volumes: 
+      - ./data:/var/lib/postgresql/data
+networks: 
+  frontend:
+  api:

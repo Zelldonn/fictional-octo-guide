@@ -1,7 +1,7 @@
 FROM python:3.10-slim-buster
 
-RUN apt update && apt upgrade 
-RUN apt install -y etherwake
+RUN apt update -y && apt upgrade -y 
+RUN apt install ssh -y
 
 WORKDIR /waker-api
 

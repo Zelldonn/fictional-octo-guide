@@ -5,15 +5,16 @@ services:
     image: waker-api
     volumes:
       - ./waker-api/src:/waker-api/src
-      - ./config/:/.ssh/
+      - /home/pierre/.ssh/wow:/.ssh/wow
     ports:
       - "8888:8888"
     networks: 
       - api
     environment:
       SSH_USER: pierre 
-      SSH_PRIVATE_KEY_PATH: /.ssh/private_key
+      SSH_PRIVATE_KEY_PATH: /.ssh/wow
       SSH_HOST: 192.168.1.254
+      SSH_PORT: 1999
   frontend:
     build: ./frontend
     image: frontend

@@ -1,4 +1,15 @@
-# fictional-octo-guide
-This is some pretty interesting research...
+## Wake On Wan V1
 
-For the moment this project has no intentions or goals. This is my personal notebook for trying stuffs in java !
+The first version of the Wake on Wan uses Docker.
+
+Requirements :
+
+A server running at your home with :
+    - Docker
+    - SSH server
+
+Things to set up:
+
+mkdir ~/wow_ssh_keys
+cd ~/wow_ssh_keys
+ssh-keygen

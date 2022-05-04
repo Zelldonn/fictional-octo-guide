@@ -3,6 +3,9 @@ import React from 'react';
 import Device from './components/Device'
 import Header from './components/Header'
 import Styled from 'styled-components'
+const URL = process.env.BASE_URL || 'http://localhost';
+const PORT = process.env.PORT || 8888;
+const API_VERSION = process.env.API_VERSION || "/api/v1"
 
 const AppStyle = Styled.div `
   text-align: center;
@@ -42,10 +45,20 @@ const Devices = Styled.div `
 
 function App() {
 
-  const devices = [{description:"PC fixe", status:"Online"},{description:"MSI", status:"Online"}].map((device) =>
-    <Device description={device.description} status={device.status} ></Device>
-  );
+  const [devices, setDevices] = React.useState([])
 
+  async function fetchDevices() {
+    await fetch(`${URL}:${PORT}${API_VERSION}/devices`).then(response => response.json())
+    .then(data => setDevices(data));
+  }
+
+  const devices_render = devices.map((device) =>{
+    return <Device device={device} key={device.id}></Device>
+  });
+
+  React.useEffect(() => {
+    fetchDevices()
+  },[])
   return (
     <AppStyle>
       <Header> </Header>
@@ -54,7 +67,7 @@ function App() {
         <div style={{height: '1px',backgroundColor: '#61D482', width:'100%'}}></div>
       </div>
       <Devices>
-        {devices}
+        {devices_render}
       </Devices>
       
     </AppStyle>

@@ -14,7 +14,7 @@ models.Base.metadata.create_all(bind=engine)
 
 router = APIRouter(prefix="/api/v1")
 
-# Dependency
+
 def get_db():
     db = SessionLocal()
     try:

@@ -13,7 +13,7 @@ const DeviceStyle = Styled.div `
         justify-content:space-between;
         min-height:80px;
         width:90vw;
-        padding: 0 5vw 0 5vw;
+        padding: 0 20px 0 20px;
         margin-top:15px;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
         .device{
@@ -25,6 +25,9 @@ const DeviceStyle = Styled.div `
             margin-right:20px;
             .description{
                 margin-right:20px;
+            }
+            .mac-address{
+                color:grey;
             }
         }
         .button{
@@ -61,7 +64,6 @@ function Device(props) {
       }
 
     const onClick = (mac_address) =>{
-        console.log(mac_address)
         wakeUpDevice(mac_address) 
     }
 
@@ -70,6 +72,9 @@ function Device(props) {
             <div className="device">
                 <div className="description">
                     {props.device.description}
+                </div>
+                <div className="mac-address">
+                    {props.device.mac_address}
                 </div>
                 <div className="status">
                     {props.device.status}

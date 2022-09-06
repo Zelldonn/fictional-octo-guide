@@ -10,6 +10,10 @@ def get_devices(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Device).offset(skip).limit(limit).all()
 
 
+def get_users(db: Session):
+    return db.query(models.User).all()
+
+
 def create_device(db: Session, device: schemas.DeviceCreate):
     db_device = models.Device(
         description=device.description, mac_address=device.mac_address

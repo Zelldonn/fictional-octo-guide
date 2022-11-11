@@ -54,7 +54,7 @@ async def edit_device(id: int, db: Session = Depends(get_db)):
 
 
 @router.post("/wakeup", tags=["Devices"])
-async def wakeup_device(mac_address: str = "2c:f0:5d:76:d4:9c"):
+async def wakeup_device(mac_address: str = "xx:x:x:xx:xx:xx"):
     print(f"INFO : sending wake on lan to : {mac_address}")
     wake_up(mac_address)
     return "Magic packet sent"

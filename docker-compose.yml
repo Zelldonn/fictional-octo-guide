@@ -1,20 +1,12 @@
 version: "3.9"
 services:
-  waker-api:
-    build: ./waker-api
-    image: waker-api
-    volumes:
-      - ./waker-api/src:/waker-api/src
-      - /home/pierre/.ssh/wow:/.ssh/wow
+  go-api:
+    build: ./go-api
+    image: docker-go-wow
     ports:
-      - "8888:8888"
+      - "8080:8080"
     networks: 
       - api
-    environment:
-      SSH_USER: pierre 
-      SSH_PRIVATE_KEY_PATH: /.ssh/wow
-      SSH_HOST: 192.168.1.254
-      SSH_PORT: 1999
   frontend:
     build: ./frontend
     image: frontend
